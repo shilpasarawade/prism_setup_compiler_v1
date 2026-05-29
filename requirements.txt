@@ -1,0 +1,356 @@
+Task Objective
+----------------------------------
+Build a small module named: prism_setup_compiler_v1
+The module should accept:
+
+A setup definition in JSON or YAML
+Historical market data in CSV format
+
+And produce:
+
+setup_validation_report.json
+setup_score_log.csv
+entry_intent_log.csv
+trade_log.csv
+backtest_summary.json
+audit_log.json
+
+Setup to Implement
+Please implement the following setup:
+Setup Name: Breakout Retest Acceptance
+Setup Type: Directional
+Direction: Long
+Pod: POD-1 Structural Expansion
+
+
+Entry Logic
+---------------
+Use a retest-based entry.
+Rules:
+Breakout level = previous 20-bar high
+Retest zone low = breakout level − 0.10 × ATR
+Retest zone high = breakout level + 0.10 × ATR
+Retest midpoint = average of retest zone low and high
+Entry triggers only if:
+Prior breakout occurred
+Price retests the zone
+Close is above retest midpoint
+Close is above VWAP
+Close position is at least 0.60
+Setup score is at least 6.5
+Close position formula:
+close_position = (close - low) / (high - low)
+Stop Loss Logic
+For long trades:
+
+atr_stop = entry_price - ATR × atr_multiplier
+
+structure_stop = retest_zone_low
+
+stop_loss = min(atr_stop, structure_stop)
+
+Use:
+
+atr_multiplier = 1.2
+
+Risk per unit:
+
+R = entry_price - stop_loss
+
+Reject the trade if R is less than or equal to zero.
+
+Target Logic
+Target 1:
+
+T1 = entry_price + 1.5R
+
+Target 2:
+
+T2 = entry_price + 2.5R
+
+Setup Score Model
+Score should be calculated from 0 to 10 using the following weighted model:
+
+
+
+Component
+Weight
+Structure
+25%
+Positioning
+25%
+Regime
+15%
+Microstructure
+15%
+Interaction
+20%
+Final formula:
+
+SetupScore = Structure × 0.25 + Positioning × 0.25 + Regime × 0.15 + Microstructure × 0.15 + Interaction × 0.20
+
+Tier mapping:
+
+
+
+Score
+Tier
+Action
+Below 5.5
+IGNORE
+No trade
+5.5 to 6.5
+MINIMUM
+Optional / small
+6.5 to 7.5
+STRONG
+Trade allowed
+Above 7.5
+PREMIUM
+Full trade allowed
+Acceptance Filters
+A setup should pass only if:
+
+Liquidity score is at least 0.60
+
+Volume ratio is at least 1.20
+
+Spread percentage is less than or equal to 0.50%
+
+MPS state is not BLOCK
+
+Regime is allowed
+
+Market state is allowed
+
+Invalidation Rules
+The setup or trade becomes invalid if:
+
+Close moves back below breakout level
+
+Regime becomes SHOCK
+
+MSE state becomes TREND_DOWN
+
+MPS state becomes BLOCK
+
+Every invalidation must be logged with a reason code.
+
+Re-entry Logic
+Allow only one re-entry.
+
+Re-entry is allowed only if:
+
+Previous trade was stopped or expired
+
+Setup score is at least 6.5
+
+Regime has not degraded
+
+Price enters the retest zone again
+
+TTL condition is still valid
+
+TTL Logic
+If entry does not occur within 5 bars after breakout, the entry intent should expire.
+
+If trade is open and neither target nor stop is hit within 20 bars, exit using TIME_EXIT.
+
+Input Market Data
+Please use a CSV with the following minimum columns:
+
+timestamp
+
+open
+
+high
+
+low
+
+close
+
+volume
+
+vwap
+
+atr_14
+
+spread_pct
+
+liquidity_score
+
+oi
+
+mse_state
+
+regime
+
+ipse_alignment
+
+microstructure_state
+
+mps_state
+
+If real data is not provided, you may generate a synthetic dataset, but it should be realistic and should include cases where trades are accepted, rejected, invalidated, expired, and re-entered.
+
+Required Outputs
+1. Setup Validation Report
+Should validate:
+
+Required fields
+
+Weight total equals 100
+
+Valid setup type
+
+Valid entry type
+
+ATR multiplier present
+
+TTL present
+
+Target R values valid
+
+2. Setup Score Log
+Bar-by-bar score with component scores and final tier.
+
+3. Entry Intent Log
+Every entry intent should include:
+
+Timestamp
+
+Entry type
+
+Breakout level
+
+Retest zone
+
+Entry price
+
+Stop loss
+
+Target 1
+
+Target 2
+
+Reason codes
+
+4. Trade Log
+Each trade should include:
+
+Trade ID
+
+Entry time
+
+Entry price
+
+Stop loss
+
+Target 1
+
+Target 2
+
+Exit time
+
+Exit price
+
+Exit reason
+
+R multiple
+
+Setup score at entry
+
+Regime at entry
+
+5. Backtest Summary
+Include:
+
+Total trades
+
+Wins
+
+Losses
+
+Win rate
+
+Average R
+
+Gross R
+
+Max drawdown in R
+
+Expected value in R
+
+Profit factor
+
+Average holding bars
+
+6. Audit Log
+Every accepted, rejected, expired, invalidated, and exited trade must have reason codes.
+
+Important Rules
+Please avoid:
+
+Hardcoded output
+
+Look-ahead bias
+
+Future candle usage for entry confirmation
+
+Notebook-only code without modular structure
+
+Missing logs
+
+Missing reason codes
+
+Ambiguous discretionary assumptions
+
+Every trade taken or rejected must be explainable.
+
+Expected Folder Structure
+prism_setup_compiler_v1/
+│
+├── README.md
+├── requirements.txt
+├── config/
+│   └── setup_submission.json
+├── data/
+│   └── sample_market_data.csv
+├── src/
+│   ├── main.py
+│   ├── schema_validator.py
+│   ├── market_state_gate.py
+│   ├── setup_scorer.py
+│   ├── entry_engine.py
+│   ├── risk_levels.py
+│   ├── invalidation_engine.py
+│   ├── backtester.py
+│   └── audit_logger.py
+├── outputs/
+│   ├── setup_validation_report.json
+│   ├── setup_score_log.csv
+│   ├── entry_intent_log.csv
+│   ├── trade_log.csv
+│   ├── backtest_summary.json
+│   └── audit_log.json
+└── tests/
+    ├── test_validator.py
+    ├── test_entry_logic.py
+    ├── test_stop_loss.py
+    └── test_ttl.py
+
+Submission Requirements
+Please submit:
+
+GitHub repository link or zipped project folder
+
+README with setup instructions
+
+Sample input file
+
+All output files
+
+Short explanation of your design choices
+
+Any assumptions clearly listed
+
