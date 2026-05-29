@@ -1,0 +1,527 @@
+[
+    {
+        "report_timestamp": "2026-05-29 23:53:01.878911",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-29 23:59:47.047057",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-30 00:02:51.880768",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-30 00:04:48.622291",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-30 00:18:31.970482",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-30 00:23:34.408563",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    },
+    {
+        "report_timestamp": "2026-05-30 00:26:43.578085",
+        "validation_status": "FAILED",
+        "total_errors": 5,
+        "errors": [
+            "Missing field: weights",
+            "Missing field: atr_multiplier",
+            "Missing field: target_r",
+            "Invalid setup type",
+            "Invalid entry type"
+        ],
+        "config_checked": {
+            "setup_id": "BRK_001",
+            "symbol": "RELIANCE.NS",
+            "exchange": "BSE",
+            "timeframe": "5m",
+            "period": "5d",
+            "setup_type": "breakout_retest",
+            "setup_score": 6.5,
+            "entry_type": "limit",
+            "market_state_gate": {
+                "enabled": true,
+                "trend_filter": "close_above_50ema",
+                "volatility_filter": "atr_above_avg",
+                "volume_filter": "volume_above_avg"
+            },
+            "breakout_logic": {
+                "lookback_bars": 20,
+                "breakout_level": "previous_20_bar_high",
+                "confirmation": "close_above_breakout"
+            },
+            "retest_logic": {
+                "enabled": true,
+                "atr_multiplier": 0.1,
+                "retest_zone": {
+                    "low": "breakout_level - 0.10 * ATR",
+                    "high": "breakout_level + 0.10 * ATR"
+                },
+                "confirmation_rules": [
+                    "close_above_retest_midpoint",
+                    "close_above_vwap"
+                ]
+            },
+            "risk_management": {
+                "stop_loss": {
+                    "type": "atr",
+                    "atr_multiplier": 2.5,
+                    "setup_score": 6.5
+                },
+                "target": {
+                    "type": "risk_reward",
+                    "rr": 2.0
+                },
+                "max_risk_per_trade_percent": 1
+            },
+            "ttl": {
+                "bars": 6,
+                "cancel_if_not_triggered": true
+            },
+            "position_sizing": {
+                "method": "fixed_risk",
+                "capital": 100000,
+                "risk_percent": 1
+            },
+            "execution": {
+                "slippage_ticks": 2,
+                "allow_partial_fill": false
+            },
+            "metadata": {
+                "created_by": "",
+                "version": "1.0",
+                "timestamp": "2026-05-29T10:15:00Z"
+            }
+        }
+    }
+]
